@@ -40,12 +40,12 @@ cd MTTT
 pip3 install --upgrade pip
 pip3 install -r requirements.txt
 ```
-Then install the latest version of jax library as
+Then install the latest version of JAX library as
 ```
 pip3 install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
-You may need a different jax package, depending on CUDA and cuDNN libraries installed on your machine. 
-Please consult [official jax documentation](https://github.com/google/jax#pip-installation-gpu-cuda) for more information.
+You may need a different JAX package, depending on CUDA and cuDNN libraries installed on your machine. 
+Please consult [official JAX documentation](https://github.com/google/jax#pip-installation-gpu-cuda) for more information.
 
 ### Prepare TFDS data
 
