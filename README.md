@@ -1,5 +1,11 @@
 # Learning to (Learn at Test Time)
 
+[**GPU Setup**](#gpu-setup)
+| [**Cloud TPU VM Setup**](#cloud-tpu-vm-setup)
+| [**Quick Start**](#quick-start)
+| [**Plot Learning Curves**](#plot-learning-curves)
+| [**Commands for All Experiments**](#commands-for-all-experiments)
+
 ## GPU Setup
 
 We first discuss how to set up and run our code on a (local) GPU machine. 
