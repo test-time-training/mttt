@@ -111,7 +111,8 @@ To specify a custom path to your dataset, you could either code it in
 ```config_patch.py``` and ```config_pixel.py```, or specify ```--config.tfds_path=/YOUR/TFDS/PATH``` 
 when launching a job.
 
-Please note that you may need to increase ```--config.input.accum_time```  to accommodate the memory constraint of your GPU devices.
+Please note that you may need to increase gradient accumulation times by specifying ```--config.input.accum_time```  
+to accommodate the memory constraint of your device.
 
 Experiment statistics (train/val top-1 accuracy, loss, inner loss) will be saved in ```./exp/patch_MTTT_MLP/all_stat_dict.pth```, 
 and model and optimizer state checkpoint will be automatically saved in ```./ckpt/patch_MTTT_MLP/checkpoint.npz```.
@@ -144,7 +145,8 @@ thus we manually set inner loss of self-attention and linear attention to ```inf
 ### Patch ImageNet
 
 For Patch ImageNet, the following commands use ViT-Small by default. You may add ```--config.model=tiny``` to use ViT-Tiny, 
-or customize our code for other models.
+or customize our code for other models. Please note that you may need to tune gradient accumulation times by specifying 
+```--config.input.accum_time``` to accommodate the memory constraint of your device.
 
 MTTT MLP (itr=1): 
 ```
@@ -201,7 +203,8 @@ python train.py --config config_patch.py \
 ### Pixel ImageNet
 
 For Pixel ImageNet, the following commands use ViT-Tiny by default. You may add ```--config.model=small``` to use ViT-Small, 
-or customize our code for other models.
+or customize our code for other models. Please note that you may need to tune gradient accumulation times by specifying 
+```--config.input.accum_time``` to accommodate the memory constraint of your device.
 
 MTTT MLP (itr=1): 
 ```
