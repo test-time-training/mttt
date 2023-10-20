@@ -56,14 +56,15 @@ Please consult the [official JAX documentation](https://github.com/google/jax#pi
 
 ### Prepare TFDS data
 
-1. Manually create a directory with the following structure (or use ```$TFDS_DATA_DIR``` if it exists; it should be ```~/tensorflow_datasets/``` by default):
+1. Manually create a directory with the following structure:
 ```
 /YOUR/TFDS/PATH
 ├── downloads
    └── manual
 ```
+Or you can use ```$TFDS_DATA_DIR``` if it exists. This should be ```~/tensorflow_datasets/``` by default.
 2. Download [imagenet2012](https://www.image-net.org/challenges/LSVRC/2012/).
-3. Place the downloaded ILSVRC2012_img_train.tar and ILSVRC2012_img_val.tar files under ```YOUR/TFDS/PATH/downloads/manual```. 
+3. Place the downloaded files ```ILSVRC2012_img_train.tar`` and ```ILSVRC2012_img_val.tar``` under ```YOUR/TFDS/PATH/downloads/manual```. 
 4. Run the following commands (which may take ~1 hour):
 ```
 cd MTTT
@@ -202,6 +203,8 @@ python train.py --config config_patch.py \
 ### ImageNet from pixels
 
 For ImageNet from pixels, the following commands use ViT-Tiny by default. You may add ```--config.model=small``` to use ViT-Small. 
+
+Each run can take at least a few days on most machines.
 
 As noted above, you may need to tune the number of gradient accumulation steps by specifying ```--config.input.accum_time``` to accommodate the memory constraint of your devices.
 
