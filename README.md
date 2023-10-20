@@ -199,9 +199,9 @@ python train.py --config config_patch.py \
                 --workdir ./exp/patch_self_attention
 ```
 
-### Pixel ImageNet
+### ImageNet from pixels
 
-For Pixel ImageNet, the following commands use ViT-Tiny by default. You may add ```--config.model=small``` to use ViT-Small, or customize our code for other models. 
+For ImageNet from pixels, the following commands use ViT-Tiny by default. You may add ```--config.model=small``` to use ViT-Small. 
 
 As noted above, you may need to tune the number of gradient accumulation steps by specifying ```--config.input.accum_time``` to accommodate the memory constraint of your devices.
 
