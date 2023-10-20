@@ -120,7 +120,7 @@ The most recent checkpoint for model and optimizer state will be saved in ```./c
 
 We provide two simple files to plot the saved statistics during training.
 
-### Validation error curve
+### Validation error
 Fill the ```folder_names``` list in ```plot_multi.py``` with the folder names of the experiments you want to plot together, then run 
 ```
 python plot_multi.py
@@ -128,7 +128,7 @@ python plot_multi.py
 
 It can compare the learning curves of multiple experiments at once.
 
-### MTTT inner loss curve
+### Inner-loop reconstruction loss
 Set the ```folder_name``` variable in ```plot_inner.py``` to the name of the experiment you want to plot, 
 then run 
 ```
