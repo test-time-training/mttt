@@ -114,7 +114,7 @@ when launching a job.
 
 To accommodate the memory constraint of your devices, you may need to tune the number of gradient accumulation steps by specifying ```--config.input.accum_time```.
 
-Statistics for the experiment (traing and validation accuracy and loss, inner-loop reconstruction loss) will be saved in ```./exp/patch_MTTT_MLP/all_stat_dict.pth```.
+Statistics for the experiment will be saved in ```./exp/patch_MTTT_MLP/all_stat_dict.pth```. These include traing and validation accuracy and loss, as well as inner-loop reconstruction loss.
 The most recent checkpoint for model and optimizer state will be saved in ```./ckpt/patch_MTTT_MLP/checkpoint.npz```.
 
 ## Plot Statistics
