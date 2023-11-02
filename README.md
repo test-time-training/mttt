@@ -62,9 +62,9 @@ Please consult the [official JAX documentation](https://github.com/google/jax#pi
 ├── downloads
    └── manual
 ```
-Or you can use ```$TFDS_DATA_DIR``` if it exists. This should be ```~/tensorflow_datasets/``` by default.
-2. Download [imagenet2012](https://www.image-net.org/challenges/LSVRC/2012/).
-3. Place the downloaded files ```ILSVRC2012_img_train.tar`` and ```ILSVRC2012_img_val.tar``` under ```YOUR/TFDS/PATH/downloads/manual```. 
+Or you can use ```$TFDS_DATA_DIR``` if it exists. This should be ```~/tensorflow_datasets/``` by default.</br>
+2. Download [imagenet2012](https://www.image-net.org/challenges/LSVRC/2012/).</br>
+3. Place the downloaded files ```ILSVRC2012_img_train.tar`` and ```ILSVRC2012_img_val.tar``` under ```YOUR/TFDS/PATH/downloads/manual```. </br>
 4. Run the following commands (which may take ~1 hour):
 ```
 cd MTTT
