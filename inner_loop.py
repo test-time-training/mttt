@@ -273,11 +273,11 @@ class TTTLayer(nn.Module):
       embed_new = embed_new.sum(axis=0)
       embed_new = embed_new + self.h_bias
 
-      inner_loss_tuple_avg = ()
+      inner_loss_tuple_sum = ()
       for i in range(len(inner_loss_tuple)):
-        inner_loss_tuple_avg += (inner_loss_tuple[i].sum(),)
+        inner_loss_tuple_sum += (inner_loss_tuple[i].sum(),)
 
-      return embed_new, inner_loss_tuple_avg
+      return embed_new, inner_loss_tuple_sum
 
     ttt_output, inner_loss_tuple = update_embed(batch)
 
