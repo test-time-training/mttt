@@ -138,27 +138,30 @@ class TTTLayer(nn.Module):
     self.encoder = TTTEncoder(mlp_dim=self.width // self.num_heads, config=self.config)
     encoder_params = self.encoder.init(jax.random.PRNGKey(0), jnp.ones([1, self.width // self.num_heads]))["params"]
 
-    def get_multi_head_params(params, kernel_init="xavier"):
+    def get_multi_head_params(params, kernel_init="xavier_uniform"):
       flat_params = traverse_util.flatten_dict(params, sep="/")
       for k in flat_params.keys():
+        new_shape = (self.num_heads, *flat_params[k].shape)
         if "kernel" in k:
           if kernel_init == "xavier_uniform":
-            initializer = nn.initializers.xavier_uniform()
+            initializer = nn.initializers.xavier_uniform(batch_axis=(0,))
           elif kernel_init == "zero":
             initializer = nn.initializers.zeros
           elif kernel_init == "vs_fan_in":
-            initializer = nn.initializers.variance_scaling(scale=1., mode="fan_in", distribution="uniform")
+            initializer = nn.initializers.variance_scaling(scale=1., batch_axis=(0,),
+                                                           mode="fan_in", distribution="uniform")
           elif kernel_init == "vs_fan_out":
-            initializer = nn.initializers.variance_scaling(scale=1., mode="fan_out", distribution="uniform")
+            initializer = nn.initializers.variance_scaling(scale=1., batch_axis=(0,),
+                                                           mode="fan_out", distribution="uniform")
           else:
             raise NotImplementedError("Initializer %s Not Implemented." % (kernel_init))
-          p = self.param(k, initializer, (self.num_heads, *flat_params[k].shape), self.dtype)
+          p = self.param(k, initializer, new_shape, self.dtype)
         elif 'scale' in k:
           # initialize scale to 1
-          p = self.param(k, jax.nn.initializers.ones, (self.num_heads, *flat_params[k].shape), self.dtype)
+          p = self.param(k, jax.nn.initializers.ones, new_shape, self.dtype)
         else:
           # initialize bias to 0
-          p = self.param(k, jax.nn.initializers.zeros, (self.num_heads, *flat_params[k].shape), self.dtype)
+          p = self.param(k, jax.nn.initializers.zeros, new_shape, self.dtype)
         flat_params[k] = p
       params_init = traverse_util.unflatten_dict(flat_params, sep="/")
       return params_init
