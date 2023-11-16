@@ -588,7 +588,7 @@ def tree_flatten_with_names(tree):
   val_names, perm = zip(*_traverse_with_names(token_tree))
   inv_perm = np.argsort(perm)
 
-  # Custom traverasal should visit the same number of leaves.
+  # Custom traversal should visit the same number of leaves.
   assert len(val_names) == len(vals)
 
   return [(val_names[i], v) for i, v in zip(inv_perm, vals)], tree_def
